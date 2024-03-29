@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="/lib/browser.js"></script>
+</head>
+
+<body>
+	<script>
+		const t1 = Date.now();
+		console.log('📢 [test.html:14]', window.cryptoPack);
+		const { cryptoPack } = window;
+		const { RSA, encryptWithAesRsaPb, decryptWithAesRsaPv } = cryptoPack;
+		RSA.generateKeyPair().then(({ privateKey, publicKey }) => {
+			console.log('generateKeyPair success - duration: ', Date.now() - t1);
+			const t2 = Date.now();
+
+			encryptWithAesRsaPb(JSON.stringify({
+				asdasdas: "asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas",
+				qw: "--------------------------------",
+				han: "你好",
+			}), publicKey).then(({ encryptAesData, encryptAesKeyByRsa }) => {
+				console.log('encryptWithAesRsaPb success - duration: ', Date.now() - t2);
+				const t3 = Date.now();
+
+				decryptWithAesRsaPv(encryptAesData, encryptAesKeyByRsa, privateKey).then(
+					r => {
+						console.log('decryptWithAesRsaPv encryptWithAesRsaPb success - duration: ', Date.now() - t3)
+						console.log('decrypt content: ' + r)
+					}
+				)
+			})
+		})
+	</script>
+</body>
+
+</html>

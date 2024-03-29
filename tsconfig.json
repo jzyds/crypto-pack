@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"downlevelIteration": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"jsx": "react",
+		"declaration": true,
+		"pretty": true,
+		"rootDir": "src",
+		"sourceMap": false,
+		"strict": true,
+		"esModuleInterop": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noImplicitAny": false,
+		"noFallthroughCasesInSwitch": true,
+		"importHelpers": true,
+		"outDir": "./lib",
+	},
+	"exclude": [
+		"node_modules",
+		"lib",
+		"test"
+	]
+}
